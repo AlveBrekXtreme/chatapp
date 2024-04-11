@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  get 'login/new'
-  get 'login/show'
+  devise_for :users
+  get 'user/new'
 
-  root 'login#show'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resource :user, only: [:new, :create, :show]
+  root 'user#show'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

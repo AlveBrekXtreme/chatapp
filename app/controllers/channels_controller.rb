@@ -13,9 +13,7 @@ class ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
     if @channel.save
-      render :show
-    else
-      render :new
+      redirect_to channels_index_path
     end
   end
 

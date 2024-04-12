@@ -1,3 +1,3 @@
-<%= turbo_frame_tag "chat" do %>
-  <%= channel %>
+<%= turbo_frame_tag "chat", class: "my-4 mr-4 p-4 border-[1px] rounded-lg min-w-96 w-[800px] max-w-3xl" do %>
+  <h1 class="text-center text-2xl font-semibold"><%= name %></h1>
 <% end %>

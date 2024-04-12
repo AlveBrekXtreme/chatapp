@@ -4,6 +4,15 @@ class ChannelsController < ApplicationController
   end
 
   def show
+    @channel = Channel.find(params[:id])
+    # render turbo_steam:
+    #          turbo_stream.replace("chatroom",
+    #           partial: "chatroom",
+    #           locals: { channel: @channel }
+    #          )
+    respond_to do |format|
+      format.html
+    end
   end
 
   def new

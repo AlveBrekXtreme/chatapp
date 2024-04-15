@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'messages/new'
-  get 'messages/create'
+  post 'messages/create'
   get 'channels/index'
   get 'channels/show'
   get 'channels/new'

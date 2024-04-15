@@ -1,3 +1,11 @@
 <%= turbo_frame_tag "chat", class: "my-4 mr-4 p-4 border-[1px] rounded-lg min-w-96 w-[800px] max-w-3xl" do %>
-  <h1 class="text-center text-2xl font-semibold"><%= name %></h1>
+  <% if channel.present? %>
+    <h1 class="text-center text-2xl font-semibold"><%= channel.name %></h1>
+    <% channel.messages.each do |message| %>
+      <div class="chat chat-start">
+        <h1 class="chat-header"><%= message.user.username %></h1>
+        <div class="chat-bubble"><%= message.content %></div>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>

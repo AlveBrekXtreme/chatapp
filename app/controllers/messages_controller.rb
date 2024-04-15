@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
 
   def create
     @channel = Message.new(message_params)
+    @channel.user_id = current_user.id
     unless @channel.content.blank?
       @channel.save
     else

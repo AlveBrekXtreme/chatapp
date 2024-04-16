@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "chat", class: "my-4 mr-4 p-4 border-[1px] rounded-lg min-w-96 w-[800px] max-w-3xl" do %>
   <% if channel.present? %>
     <h1 class="text-center text-2xl font-semibold"><%= channel.name %></h1>
-    <%= render "messages/channel_messages", channel: channel %>
+      <%= render "messages/channel_messages", channel: channel %>
   <% end %>
 <% end %>

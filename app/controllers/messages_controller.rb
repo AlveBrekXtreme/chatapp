@@ -4,10 +4,10 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @channel = Message.new(message_params)
-    @channel.user_id = current_user.id
-    unless @channel.content.blank?
-      @channel.save
+    @message = Message.new(message_params)
+    @message.user_id = current_user.id
+    unless @message.content.blank?
+      @message.save
     else
       flash[:notice] = 'It cant be blank'
     end

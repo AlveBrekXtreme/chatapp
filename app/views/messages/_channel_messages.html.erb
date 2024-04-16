@@ -1,14 +1,21 @@
 <div class="flex flex-col">
   <div class="h-[84vh] overflow-auto">
     <% channel.messages.each do |message| %>
-      <div class="chat chat-start flex flex-col">
+      <% if channel.messages.last.id == message.id %>
+      <%= turbo_stream_from :show_messages %>
+        <div id="all_messages">
+      <% else %>
+        <div>
+      <% end %>
+        <div id=<%= dom_id(message) %>, class="chat chat-start flex flex-col">
         <div class="flex">
-          <h1 class="chat-header mr-2 text-white"><%= message.user.username %></h1>
-          <time class="text-xs text-white"><%= message.created_at.strftime("%H:%M") %></time>
+          <h1 id=<%= dom_id(message) %>, class="chat-header mr-2 text-white"><%= message.user.username %></h1>
+          <time id=<%= dom_id(message) %>, class="text-xs text-white"><%= message.created_at.strftime("%H:%M") %></time>
         </div>
-        <div class="chat-bubble"><%= message.content %></div>
+        <div id=<%= dom_id(message) %>, class="chat-bubble"><%= message.content %></div>
       </div>
     <% end %>
+    </div>
   </div>
   <%= form_with model: Message.new, url: messages_create_path, class: "mt-6", remote: true do |f| %>
     <%= f.hidden_field :channel_id, value: channel.id %>

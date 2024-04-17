@@ -4,9 +4,11 @@
       <%= render "messages/message", message: message %>
     <% end %>
   </div>
-  <%= form_with model: Message.new, url: messages_create_path, class: "mt-6", remote: true do |f| %>
+  <%= form_with model: Message.new, url: messages_create_path, remote: true do |f| %>
     <%= f.hidden_field :channel_id, value: channel.id %>
-    <%= f.text_field :content %>
-    <%= f.submit "➡️" %>
+    <%= f.text_field :content, class: "rounded-md h-8" %>
+    <%= button_tag(type: "submit") do %>
+      <% render "icons/send" %>
+    <% end %>
   <% end %>
 <% end %>

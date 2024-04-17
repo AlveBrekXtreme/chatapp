@@ -1,7 +1,7 @@
 <div class="chat chat-start flex flex-col mb-2">
   <div class="flex mb-[6px]">
     <h1 class="chat-header mr-2 text-white"><%= message.user.username %></h1>
-    <time class="text-xs text-white"><%= message.created_at.strftime("%H:%M") %></time>
+    <time class="text-xs text-white"><%= message.created_at.strftime("%H:%M %d. %b") %></time>
   </div>
   <div class="chat-bubble"><%= message.content %></div>
 </div>

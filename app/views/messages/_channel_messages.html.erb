@@ -1,14 +1,12 @@
 <%= turbo_frame_tag channel.created_at do %>
-  <div class="flex flex-col">
-    <div class="h-[84vh] overflow-auto">
-      <% channel.messages.each do |message| %>
-        <%= render "messages/message", message: message %>
-      <% end %>
-    </div>
-    <%= form_with model: Message.new, url: messages_create_path, class: "mt-6", remote: true do |f| %>
-      <%= f.hidden_field :channel_id, value: channel.id %>
-      <%= f.text_field :content %>
-      <%= f.submit "➡️" %>
+  <div class="flex flex-col h-[84vh] overflow-auto flex-col-reverse">
+    <% channel.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
     <% end %>
   </div>
+  <%= form_with model: Message.new, url: messages_create_path, class: "mt-6", remote: true do |f| %>
+    <%= f.hidden_field :channel_id, value: channel.id %>
+    <%= f.text_field :content %>
+    <%= f.submit "➡️" %>
+  <% end %>
 <% end %>

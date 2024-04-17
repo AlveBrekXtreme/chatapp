@@ -1,8 +1,18 @@
-<div class="chat chat-start flex flex-col mb-2">
-  <div class="flex mb-[6px]">
-    <h1 class="chat-header mr-2 text-white"><%= message.user.username %></h1>
-    <time class="text-xs text-white"><%= message.created_at.strftime("%H:%M %d. %b") %></time>
+<% if message.user.id === current_user.id %>
+  <div class="chat chat-start flex flex-col mb-2">
+    <div class="flex mb-[6px] chat-start">
+      <h1 class="chat-header mr-2 text-white"><%= message.user.username %></h1>
+      <time class="text-xs text-white"><%= message.created_at.strftime("%H:%M %d. %b") %></time>
+    </div>
+    <div class="chat-bubble chat-bubble-primary"><%= message.content %></div>
   </div>
-  <div class="chat-bubble"><%= message.content %></div>
-</div>
+<% else %>
+  <div class="chat chat-end flex flex-col mb-2">
+    <div class="flex mb-[6px] chat-start">
+      <time class="text-xs text-white"><%= message.created_at.strftime("%H:%M %d. %b") %></time>
+      <h1 class="chat-header mr-2 text-white"><%= message.user.username %></h1>
+    </div>
+    <div class="chat-bubble"><%= message.content %></div>
+  </div>
+<% end %>
 

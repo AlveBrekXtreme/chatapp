@@ -1,3 +1,4 @@
+<% id = request.original_url[-2, 2] %>
 <div class="flex w-screen h-screen">
   <div class="m-4">
     <ul class="menu p-0 mb-2 w-56 border-[1px] rounded-lg">
@@ -8,5 +9,8 @@
     <%= link_to "Create new channel", channels_new_path, class: "btn btn-outline btn-sm" %>
   </div>
   <%= turbo_stream_from :show_messages %>
-  <%= render "chatroom", channel: @channels.first %>
+  <% if /\A\d+\z/.match?(id) %>
+    <%= render "chatroom", channel: @channels.find(id) %>
+  <% end %>
+
 </div>

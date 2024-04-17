@@ -4,10 +4,15 @@ class ChannelsController < ApplicationController
   end
 
   def show
+    @channels = Channel.all
     @channel = Channel.find(params[:id])
-    respond_to do |format|
-      format.html
+    unless turbo_frame_request?
+      render "index", channel: @channel
+      return
     end
+    # respond_to do |format|
+    #   format.html
+    # end
   end
 
   def new

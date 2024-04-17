@@ -10,7 +10,7 @@
   <div class="chat chat-end flex flex-col mb-2">
     <div class="flex mb-[6px] chat-start">
       <time class="text-xs text-white"><%= message.created_at.strftime("%H:%M %d. %b") %></time>
-      <h1 class="chat-header mr-2 text-white"><%= message.user.username %></h1>
+      <h1 class="chat-header mr-2 text-white ml-2"><%= message.user.username %></h1>
     </div>
     <div class="chat-bubble"><%= message.content %></div>
   </div>

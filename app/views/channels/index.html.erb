@@ -2,7 +2,7 @@
   <div class="m-4">
     <ul class="menu p-0 mb-2 w-56 border-[1px] rounded-lg">
       <% @channels.each do |channel| %>
-        <li><%= link_to channel.name, channels_show_url(id: channel.id), data: {turbo_advance: true, turbo_frame: "chat"} %></li>
+        <li><%= link_to channel.name, channels_show_url(id: channel.id), data: {turbo_action: "advance", turbo_frame: "chat"} %></li>
       <% end %>
     </ul>
     <%= link_to "Create new channel", channels_new_path, class: "btn btn-outline btn-sm" %>

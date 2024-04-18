@@ -10,9 +10,6 @@ class ChannelsController < ApplicationController
       render "index", channel: @channel
       return
     end
-    # respond_to do |format|
-    #   format.html
-    # end
   end
 
   def new

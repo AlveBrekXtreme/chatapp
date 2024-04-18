@@ -1,7 +1,7 @@
-<%= turbo_frame_tag channel.created_at do %>
-  <div class="flex flex-col h-[84vh] overflow-auto flex-col-reverse">
+
+  <div id="<%= channel.created_at %>" class="flex flex-col h-[84vh] overflow-auto flex-col-reverse">
     <% channel.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+      <%= render "messages/message", message: message, self_user: self_user %>
     <% end %>
   </div>
   <%= form_with model: Message.new, url: messages_create_path, remote: true do |f| %>
@@ -11,4 +11,3 @@
       <% render "icons/send" %>
     <% end %>
   <% end %>
-<% end %>

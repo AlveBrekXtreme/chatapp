@@ -1,4 +1,4 @@
-<%# if message.user.id === current_user.id %>
+<% if message.user === self_user %>
   <div class="chat chat-start flex flex-col mb-2">
     <div class="flex mb-[6px] chat-start">
       <h1 class="chat-header mr-2 text-white"><%= message.user.username %></h1>
@@ -6,13 +6,13 @@
     </div>
     <div class="chat-bubble chat-bubble-primary"><%= message.content %></div>
   </div>
-<%# else %>
-<!--  <div class="chat chat-end flex flex-col mb-2">-->
-<!--    <div class="flex mb-[6px] chat-start">-->
-<!--      <time class="text-xs text-white"><%#= message.created_at.strftime("%H:%M %d. %b") %></time>-->
-<!--      <h1 class="chat-header mr-2 text-white ml-2"><%#= message.user.username %></h1>-->
-<!--    </div>-->
-<!--    <div class="chat-bubble"><%#= message.content %></div>-->
-<!--  </div>-->
-<%# end %>
+<% else %>
+  <div class="chat chat-end flex flex-col mb-2">
+    <div class="flex mb-[6px] chat-start">
+      <time class="text-xs text-white"><%= message.created_at.strftime("%H:%M %d. %b") %></time>
+      <h1 class="chat-header mr-2 text-white ml-2"><%= message.user.username %></h1>
+    </div>
+    <div class="chat-bubble"><%= message.content %></div>
+  </div>
+<% end %>
 
